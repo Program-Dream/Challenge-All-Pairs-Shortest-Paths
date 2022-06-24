@@ -9,13 +9,16 @@ Program Dream Coding Challenge: All Pairs Shortest Paths
 
 ## Input format
 ```
+3
 A ----> B
 B --> A
 c --------> B
 B ----> C
 ...
 ```
-where the amount of minus symbols `-` is the weight of the edge between the two vertices. The direction of the arrow gives the direction of the edge.
+where the amount of minus symbols `-` is the weight of the edge between the two vertices. 
+The direction of the arrow gives the direction of the edge.
+And the number in the first line is the amount of nodes the graph has.
 
 ## Output format
 ```
