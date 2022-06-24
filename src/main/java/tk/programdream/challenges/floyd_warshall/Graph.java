@@ -1,19 +1,26 @@
 package tk.programdream.challenges.floyd_warshall;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Graph {
 
-    private final int[][] weights;
+    private final Weight[][] weights;
     private final Map<String, Integer> nameMapping;
     private final int nodes;
 
     public Graph(final int amountOfNodes) {
         nodes = amountOfNodes;
-        weights = new int[nodes][nodes];
+        weights = new Weight[nodes][nodes];
         nameMapping = new HashMap<>(nodes);
+
+        initWeights();
+    }
+
+    private void initWeights() {
+        for (int i = 0, len = weights.length, total = len * len; i < total; i++) {
+            weights[i / len][i % len] = new Weight();
+        }
     }
 
     public boolean hasNode(String nodeName) {
@@ -36,7 +43,7 @@ public class Graph {
         return freeIndex;
     }
 
-    public void setWeight(final String fromNode, final String toNode, final int weight) {
+    public void setWeight(final String fromNode, final String toNode, final Weight weight) {
         if (!(nameMapping.containsKey(fromNode) && nameMapping.containsKey(toNode))) {
             throw new IllegalArgumentException("Not all given names have a node associated.");
         }

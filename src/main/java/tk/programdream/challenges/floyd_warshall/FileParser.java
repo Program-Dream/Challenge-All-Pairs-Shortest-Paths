@@ -1,15 +1,20 @@
 package tk.programdream.challenges.floyd_warshall;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 public class FileParser {
-    private final Graph graph;
+    private Graph graph;
     private final String filename;
 
     public FileParser(final String filename) {
         this.filename = filename;
-        this.graph = new Graph(3);
     }
 
-    void apply(final String dataLine) {
+    private void apply(final String dataLine) {
         final String[] tokens = dataLine.split("\\s+");
 
         if (tokens.length < 3) throw new IllegalArgumentException("Line has too few tokens.");
@@ -21,7 +26,25 @@ public class FileParser {
         if (!graph.hasNode(fromNode)) graph.addNode(fromNode);
         if (!graph.hasNode(toNode)) graph.addNode(toNode);
 
-        graph.setWeight(fromNode, toNode, weight);
+        graph.setWeight(fromNode, toNode, new Weight(weight));
+    }
+
+    private BufferedReader createFileReader() throws IOException {
+        final InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream(filename);
+        if (inputStream == null) throw new IOException("Resource not accessible.");
+        final InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+        return new BufferedReader(streamReader);
+    }
+
+    public void read() throws IOException, NumberFormatException {
+        BufferedReader reader = createFileReader();
+        final String firstLine = reader.readLine();
+        graph = new Graph(Integer.parseInt(firstLine));
+        reader.lines().forEach(this::apply);
+    }
+
+    public Graph get() {
+        return graph;
     }
 
 }
