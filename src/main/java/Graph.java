@@ -20,7 +20,7 @@ public class Graph {
         }
 
         // get the next free index. If no nodes are added yet, use 0.
-        int freeIndex = nameMapping.values().stream().max(Integer::compareTo).orElse(0);
+        final int freeIndex = nameMapping.values().stream().max(Integer::compareTo).orElse(0);
 
         if (freeIndex >= nodes) {
             throw new IllegalStateException("Out of space - all nodes have already been added.");
@@ -30,13 +30,13 @@ public class Graph {
         return freeIndex;
     }
 
-    public void setWeight(String fromNode, String toNode, int weight) {
+    public void setWeight(final String fromNode, final String toNode, final int weight) {
         if (!(nameMapping.containsKey(fromNode) && nameMapping.containsKey(toNode))) {
             throw new IllegalArgumentException("Not all given names have a node associated.");
         }
 
-        int i = nameMapping.get(fromNode);
-        int j = nameMapping.get(toNode);
+        final int i = nameMapping.get(fromNode);
+        final int j = nameMapping.get(toNode);
 
         weights[i][j] = weight;
     }
