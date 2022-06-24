@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6d5cd338-8ecd-4227-be90-f0c10d8c91ff" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/Challenge-All-Pairs-Shortest-Paths.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +193,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1655235749881</updated>
-      <workItem from="1655235752715" duration="1911000" />
+      <workItem from="1655235752715" duration="2807000" />
+      <workItem from="1655546265062" duration="9000" />
     </task>
     <servers />
   </component>
@@ -213,5 +211,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
