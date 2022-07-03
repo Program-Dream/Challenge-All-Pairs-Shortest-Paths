@@ -2,6 +2,7 @@ package tk.programdream.challenges.floyd_warshall;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Graph {
 
@@ -52,5 +53,26 @@ public class Graph {
         final int j = nameMapping.get(toNode);
 
         weights[i][j] = weight;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        Set<String> nodeNames = nameMapping.keySet();
+
+        for (String fromNode : nodeNames) {
+            builder.append(fromNode);
+            builder.append(" [");
+            for (String toNode : nodeNames) {
+                final int i = nameMapping.get(fromNode);
+                final int j = nameMapping.get(toNode);
+
+                builder.append(toNode).append(": ")
+                        .append(weights[i][j]).append(", ");
+            }
+            builder.append(']').append('\n');
+        }
+
+        return builder.toString();
     }
 }
