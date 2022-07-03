@@ -1,8 +1,8 @@
 package tk.programdream.challenges.floyd_warshall;
 
 public class Weight {
-    private static int value;
-    private static boolean present;
+    private final Integer value;
+    private final boolean present;
 
     public Weight(int value) {
         present = true;
@@ -10,6 +10,7 @@ public class Weight {
     }
 
     public Weight() {
+        value = null;
         present = false;
     }
 
