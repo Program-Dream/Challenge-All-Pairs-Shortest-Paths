@@ -19,8 +19,21 @@ public class Graph {
     }
 
     private void initWeights() {
-        for (int i = 0, len = weights.length, total = len * len; i < total; i++) {
-            weights[i / len][i % len] = new Weight();
+        final int len = weights.length;
+        final int total = len * len;
+
+        for (int i = 0; i < total; i++) {
+            final int major = i / len;
+            final int minor = i % len;
+
+            final Weight weight;
+            if (major == minor) {
+                weight = new Weight(0);
+            } else {
+                weight = new Weight();
+            }
+
+            weights[major][minor] = weight;
         }
     }
 
