@@ -14,6 +14,14 @@ public class Weight {
         present = false;
     }
 
+    public boolean isPresent() {
+        return present;
+    }
+
+    public Integer getValue() {
+        return value;
+    }
+
     @Override
     public String toString() {
         if (present) {

@@ -11,6 +11,6 @@ public class Runner {
             System.out.println("Unable to parse file");
             e.printStackTrace();
         }
-        fp.get();
+        Graph g = fp.get();
     }
 }

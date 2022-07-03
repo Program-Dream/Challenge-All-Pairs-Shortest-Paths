@@ -2,19 +2,21 @@ package tk.programdream.challenges.floyd_warshall;
 
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Set;
+
+import com.google.common.collect.BiMap;
+import com.google.common.collect.HashBiMap;
 
 public class Graph {
 
     private final Weight[][] weights;
-    private final Map<String, Integer> nameMapping;
+    private final BiMap<String, Integer> nameMapping;
     private final int nodes;
 
     public Graph(final int amountOfNodes) {
         nodes = amountOfNodes;
         weights = new Weight[nodes][nodes];
-        nameMapping = new HashMap<>(nodes);
+        nameMapping = HashBiMap.create(nodes);
 
         initWeights();
     }
@@ -36,6 +38,10 @@ public class Graph {
 
             weights[major][minor] = weight;
         }
+    }
+
+    public int getAmountOfNodes() {
+        return nodes;
     }
 
     public boolean hasNode(String nodeName) {
@@ -78,6 +84,10 @@ public class Graph {
         return Arrays.stream(weights)
                 .map(Weight[]::clone)
                 .toArray(Weight[][]::new);
+    }
+
+    public String getNodeNameByIndex(final int index) {
+        return nameMapping.inverse().get(index);
     }
 
     @Override
