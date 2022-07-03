@@ -16,11 +16,21 @@ public class Weight {
 
     @Override
     public String toString() {
-        return present ? Integer.toString(value) : "infinity";
+        if (present) {
+            assert value != null;
+            return Integer.toString(value);
+        } else {
+            return "infinity";
+        }
     }
 
     @Override
     public int hashCode() {
-        return present ? value : -1;
+        if (present) {
+            assert value != null;
+            return value;
+        } else {
+            return -1;
+        }
     }
 }
