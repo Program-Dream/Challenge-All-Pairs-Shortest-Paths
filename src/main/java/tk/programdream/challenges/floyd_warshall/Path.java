@@ -1,9 +1,7 @@
 package tk.programdream.challenges.floyd_warshall;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Path {
 
@@ -25,5 +23,23 @@ public class Path {
 
     public Deque<String> getNodes() {
         return new LinkedList<>(nodes);
+    }
+
+    @Override
+    public String toString() {
+        return (
+                // Head: What path is visualized.
+                '(' +
+                nodes.peekFirst() + ", " +
+                nodes.peekLast() +
+                "): " +
+
+                // visualize path
+                String.join(" -> ", nodes) +
+                ", " +
+
+                // add total weight
+                "total = " + totalWeight
+        );
     }
 }
