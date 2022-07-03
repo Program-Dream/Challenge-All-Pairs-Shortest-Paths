@@ -7,10 +7,10 @@ public class Path {
     private final Deque<String> nodes = new LinkedList<>();
 
     public Path(String startNode) {
-        push(startNode);
+        append(startNode);
     }
 
-    public void push(String nodeName) {
-        nodes.push(nodeName);
+    public void append(String nodeName) {
+        nodes.add(nodeName);
     }
 }

@@ -1,6 +1,7 @@
 package tk.programdream.challenges.floyd_warshall;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class Runner {
     public static void main(String[] args) {
@@ -12,5 +13,8 @@ public class Runner {
             e.printStackTrace();
         }
         Graph g = fp.get();
+        ShortestPathSolver solver = new ShortestPathSolver(g);
+        solver.solve();
+        Optional<Path> p = solver.getShortestPath("A", "C");
     }
 }

@@ -1,6 +1,7 @@
 package tk.programdream.challenges.floyd_warshall;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Uses the Floyd Warshall algorithm to calculate the "all pairs shortest path".
@@ -57,16 +58,25 @@ public class ShortestPathSolver {
         }
     }
 
-    public Path getShortestPath(final int fromIndex, final int toIndex) {
+    private Optional<Path> getShortestPath(final int fromIndex, final int toIndex) {
+        if (!shortestDistance[fromIndex][toIndex].isPresent()) return Optional.empty();
+
         int current = fromIndex;
         final Path path = new Path(graph.getNodeNameByIndex(fromIndex));
 
         while (current != toIndex) {
             current = nextNode[current][toIndex];
-            path.push(graph.getNodeNameByIndex(current));
+            path.append(graph.getNodeNameByIndex(current));
         }
 
-        return path;
+        return Optional.of(path);
+    }
+
+    public Optional<Path> getShortestPath(final String from, final String to) {
+        return getShortestPath(
+                graph.getNodeIndexByName(from),
+                graph.getNodeIndexByName(to)
+        );
     }
 
 }

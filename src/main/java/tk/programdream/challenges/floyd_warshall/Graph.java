@@ -90,6 +90,10 @@ public class Graph {
         return nameMapping.inverse().get(index);
     }
 
+    int getNodeIndexByName(final String name) {
+        return nameMapping.get(name);
+    }
+
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
