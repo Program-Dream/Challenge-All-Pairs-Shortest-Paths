@@ -1,5 +1,6 @@
 package tk.programdream.challenges.floyd_warshall;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -66,6 +67,17 @@ public class Graph {
         final int j = nameMapping.get(toNode);
 
         weights[i][j] = weight;
+    }
+
+    /**
+     * Get the weights of the graph as adjacency matrix.
+     *
+     * @return a clone of the 2d weights array
+     */
+    public Weight[][] getAdjacencyMatrix() {
+        return Arrays.stream(weights)
+                .map(Weight[]::clone)
+                .toArray(Weight[][]::new);
     }
 
     @Override
