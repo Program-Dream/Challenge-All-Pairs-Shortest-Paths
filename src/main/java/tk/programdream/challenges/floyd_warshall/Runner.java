@@ -15,6 +15,12 @@ public class Runner {
         Graph g = fp.get();
         ShortestPathSolver solver = new ShortestPathSolver(g);
         solver.solve();
-        Optional<Path> p = solver.getShortestPath("A", "C");
+        PathWriter writer = new PathWriter(solver);
+        try {
+            writer.writeFile("out.txt");
+        } catch (IOException | NumberFormatException e) {
+            System.out.println("Unable to write file");
+            e.printStackTrace();
+        }
     }
 }
