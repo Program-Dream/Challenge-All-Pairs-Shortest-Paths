@@ -60,6 +60,8 @@ public class ShortestPathSolver {
     }
 
     private Optional<Path> getShortestPath(final int fromIndex, final int toIndex) {
+        if (fromIndex == toIndex) return Optional.empty();
+
         Weight totalWeight = shortestDistance[fromIndex][toIndex];
         if (!totalWeight.isPresent()) return Optional.empty();
 
