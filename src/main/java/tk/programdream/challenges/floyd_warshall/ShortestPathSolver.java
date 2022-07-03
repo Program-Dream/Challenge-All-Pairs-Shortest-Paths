@@ -44,10 +44,12 @@ public class ShortestPathSolver {
                         shortestDistance[alternative][i_1]
                 );
 
-                if (currentlyShortest.isPresent() && discoveredPath.stream().allMatch(Weight::isPresent)) {
+                if (discoveredPath.stream().allMatch(Weight::isPresent)) {
                     final int discoveredPathWeight = discoveredPath.stream().mapToInt(Weight::getValue).sum();
-                    if (discoveredPathWeight < currentlyShortest.getValue()) {
-                        shortestDistance[alternative][i_1] = new Weight(discoveredPathWeight);
+                    final boolean enablesPath = !currentlyShortest.isPresent();
+                    final boolean shortensPath = !enablesPath && discoveredPathWeight < currentlyShortest.getValue();
+                    if (enablesPath || shortensPath) {
+                        shortestDistance[i_0][i_1] = new Weight(discoveredPathWeight);
                         nextNode[i_0][i_1] = nextNode[i_0][alternative];
                     }
                 }
