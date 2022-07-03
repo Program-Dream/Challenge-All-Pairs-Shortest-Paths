@@ -1,6 +1,6 @@
 package tk.programdream.challenges.floyd_warshall;
 
-import java.util.stream.Stream;
+import java.util.List;
 
 /**
  * Uses the Floyd Warshall algorithm to calculate the "all pairs shortest path".
@@ -39,13 +39,13 @@ public class ShortestPathSolver {
                 final int i_1 = existingPath % nodes;
 
                 final Weight currentlyShortest = shortestDistance[i_0][i_1];
-                final Stream<Weight> discoveredPath = Stream.of(
+                final List<Weight> discoveredPath = List.of(
                         shortestDistance[i_0][alternative],
                         shortestDistance[alternative][i_1]
                 );
 
-                if (currentlyShortest.isPresent() && discoveredPath.allMatch(Weight::isPresent)) {
-                    final int discoveredPathWeight = discoveredPath.mapToInt(Weight::getValue).sum();
+                if (currentlyShortest.isPresent() && discoveredPath.stream().allMatch(Weight::isPresent)) {
+                    final int discoveredPathWeight = discoveredPath.stream().mapToInt(Weight::getValue).sum();
                     if (discoveredPathWeight < currentlyShortest.getValue()) {
                         shortestDistance[alternative][i_1] = new Weight(discoveredPathWeight);
                         nextNode[i_0][i_1] = nextNode[i_0][alternative];
