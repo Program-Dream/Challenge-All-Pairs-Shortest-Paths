@@ -5,8 +5,10 @@ import java.util.LinkedList;
 
 public class Path {
     private final Deque<String> nodes = new LinkedList<>();
+    private final int totalWeight;
 
-    public Path(String startNode) {
+    public Path(String startNode, int totalWeight) {
+        this.totalWeight = totalWeight;
         append(startNode);
     }
 

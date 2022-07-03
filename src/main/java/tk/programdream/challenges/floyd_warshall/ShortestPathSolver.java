@@ -1,5 +1,6 @@
 package tk.programdream.challenges.floyd_warshall;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -59,10 +60,14 @@ public class ShortestPathSolver {
     }
 
     private Optional<Path> getShortestPath(final int fromIndex, final int toIndex) {
-        if (!shortestDistance[fromIndex][toIndex].isPresent()) return Optional.empty();
+        Weight totalWeight = shortestDistance[fromIndex][toIndex];
+        if (!totalWeight.isPresent()) return Optional.empty();
 
         int current = fromIndex;
-        final Path path = new Path(graph.getNodeNameByIndex(fromIndex));
+        final Path path = new Path(
+                graph.getNodeNameByIndex(fromIndex),
+                totalWeight.getValue()
+        );
 
         while (current != toIndex) {
             current = nextNode[current][toIndex];
@@ -77,6 +82,20 @@ public class ShortestPathSolver {
                 graph.getNodeIndexByName(from),
                 graph.getNodeIndexByName(to)
         );
+    }
+
+    public List<Optional<Path>> getAllShortestPaths() {
+        List<Optional<Path>> allShortestPaths = new LinkedList<>();
+
+        // iterate all combinations and collect them:
+        for (int comb = 0; comb < nodes * nodes; comb++) {
+            allShortestPaths.add(getShortestPath(
+                    comb / nodes,
+                    comb % nodes
+            ));
+        }
+
+        return allShortestPaths;
     }
 
 }
