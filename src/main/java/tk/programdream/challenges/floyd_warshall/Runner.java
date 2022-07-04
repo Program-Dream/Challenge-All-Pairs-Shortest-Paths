@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public class Runner {
 
-    private static final String INPUT_FILE_NAME = "demo.txt";
+    private static final String INPUT_FILE_NAME = "in.txt";
     private static final String OUTPUT_FILE_NAME = "out.txt";
 
     public static void main(String[] args) {
