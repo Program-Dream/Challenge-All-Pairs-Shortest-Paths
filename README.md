@@ -36,4 +36,4 @@ The required sorting should be ascending based on these criterias:
 *Alternative: if the output format described above appears to be too complex/ too long or difficult to verify, we could just use the total of all total weights to have one number as output for this challenge.*
 
 ## Reference Implementation
-The demo/ reference implementation will be done in Java in this repository.
+The demo/ reference implementation was done in Java and can be found in the src folder. It uses Java 18 and can be executed using maven.
